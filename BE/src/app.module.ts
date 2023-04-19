@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Users } from './entities/Users';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -15,8 +14,7 @@ import { Users } from './entities/Users';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      //autoLoadEntities: true,
-      entities: [Users],
+      autoLoadEntities: true,
       keepConnectionAlive: true,
       charset: 'utf8mb4',
       synchronize: true,
